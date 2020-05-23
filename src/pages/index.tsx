@@ -1,8 +1,16 @@
 import React from 'react';
 import Input from '../components/Input';
+import Select from '../components/Select';
 import Button from '../components/Button';
 import Logo from '../components/Logo';
 import TwoColumns from '../components/TwoColumns';
+
+interface Carrer {
+	name: string;
+	id: string;
+}
+
+type CareerList = Carrer[];
 
 const Index: React.FC = () => {
 	return (
@@ -35,6 +43,18 @@ const Index: React.FC = () => {
 						<Input name="email" label="Email" />
 						<Input name="phone" label="Phone" />
 						<Input name="university" label="University" />
+						<Select name="career" label="Choose your academic career">
+							<Select.Option
+								disabled={true}
+								selected={true}
+								value={''}
+								label={'Choose your academic career'}
+							/>
+							{([] as CareerList).map((career) => {
+								const { name, id } = career;
+								return <Select.Option key={id} value={id} label={name} />;
+							})}
+						</Select>
 						<div className="flex justify-end mt-4">
 							<Button>SUBMIT</Button>
 						</div>
@@ -57,17 +77,6 @@ const Index: React.FC = () => {
 						</p>
 					}
 				/>
-				{/* <div className="flex flex-col md:flex-row justify-center max-w-xl m-4">
-					<p className="flex-4 text-center md:text-left md:border-r border-white text-white p-4 whitespace-no-wrap">
-						No Fee Unless <br className="md:hidden" /> <span>We Win</span>
-					</p>
-					<p className="flex-10 text-sm ml-4 leading-none text-white text-center md:text-left">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
-						officia facere quam laborum praesentium ut eligendi eius commodi
-						itaque quod facilis neque ipsa recusandae expedita iusto, ipsam,
-						autem sint error.
-					</p>
-				</div> */}
 			</div>
 			<div className="relative flex justify-center md:pt-10">
 				<div className="absolute top-0 left-0 h-full w-full ">
@@ -119,9 +128,9 @@ const Index: React.FC = () => {
 			</div>
 			<div className="relative bg-blue-800 p-10">
 				<h2 className="text-3xl text-white text-center">In The Media</h2>
-				<div className="absolute left-0 w-full">
+				<div className="absolute left-0 w-full flex justify-center">
 					<TwoColumns
-						className="bg-blue-900"
+						className="bg-blue-900 p-4"
 						left={<img src="https://picsum.photos/300/200" alt="logo" />}
 						right={
 							<p className="text-sm leading-none text-white text-center md:text-left">
