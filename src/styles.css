@@ -1,0 +1,29 @@
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+/* purgecss end ignore */
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+.img-blend {
+	transform: translate(0px, 40px);
+}
+
+.white-bg {
+	background-image: url('/3.jpg');
+	background-size: cover;
+}
+
+@screen md {
+	.img-right-bottom {
+		background-image: url('/1.jpg');
+		background-size: cover;
+	}
+
+	.img-blend {
+		background-image: url('/2.jpg');
+		background-size: cover;
+		transform: translate(80px, -40px);
+	}
+}
